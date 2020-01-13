@@ -15,11 +15,9 @@ import Message from '../models/message';
 import config from '../../config/server';
 import getRandomAvatar from '../../utils/getRandomAvatar';
 import { KoaContext } from '../../types/koa';
+import { saltRounds } from '../../utils/const';
 
 const { isValid } = Types.ObjectId;
-
-/** 加密salt位数 */
-const saltRounds = 10;
 
 /** 一天时间 */
 const OneDay = 1000 * 60 * 60 * 24;
@@ -76,6 +74,8 @@ interface RegisterData extends Environment {
  * @param ctx Context
  */
 export async function register(ctx: KoaContext<RegisterData>) {
+    assert(!config.disableRegister, '注册功能已被禁用, 请联系管理员开通账号');
+
     const {
         username, password, os, browser, environment,
     } = ctx.data;
@@ -532,4 +532,16 @@ export async function setUserTag(ctx: KoaContext<SetUserTagData>) {
     return {
         msg: 'ok',
     };
+}
+
+/**
+ * 获取指定在线用户 ip
+ */
+export async function getUserIps(ctx: KoaContext<{userId: string}>): Promise<string[]> {
+    const { userId } = ctx.data;
+    assert(userId, 'userId不能为空');
+    assert(isValid(userId), '不合法的userId');
+
+    const sockets = await Socket.find({ user: userId });
+    return sockets.map((socket) => socket.ip) || [];
 }

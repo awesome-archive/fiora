@@ -9,6 +9,8 @@ Language: [English](README.md) | [简体中文](./doc/README.ZH.md)
 
 Fiora is a web chat application. It is written by node.js, mongodb, socket.io and react
 
+The project started at [2015-11-04](https://github.com/yinxin630/chatroom-with-sails/commit/0a032372727550b8b4087f24ac299de03b677b9f)
+
 Online address: [https://fiora.suisuijiang.com/](https://fiora.suisuijiang.com/)   
 Android / iOS app: [https://github.com/yinxin630/fiora-app](https://github.com/yinxin630/fiora-app)
 
@@ -25,11 +27,12 @@ Android / iOS app: [https://github.com/yinxin630/fiora-app](https://github.com/y
     - Recall message
     - Give user tag
     - Reset user password
+    - View user ip
 
 ## Screenshot
 
-<img src="./doc/screenshots/runtime.jpeg" alt="PC" style="max-width:800px" />
-<img src="./doc/screenshots/mobile-runtime.png" alt="Mobile" style="max-height:667px" />
+<img src="https://github.com/yinxin630/fiora/raw/master/doc/screenshots/runtime.jpeg" alt="PC" style="max-width:800px" />
+<img src="https://github.com/yinxin630/fiora/raw/master/doc/screenshots/mobile-runtime.png" alt="Mobile" style="max-height:667px" />
 
 ## Install
 
